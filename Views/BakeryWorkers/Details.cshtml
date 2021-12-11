@@ -1,0 +1,53 @@
+﻿<!--
+    Name: Michelle Ng // 100779006
+    File Name: Details.cshtml
+    Date Created: 10 December 2021
+    Description: This is for viewing the details of a worker
+-->
+
+@model BAKERY_WEB_APPLICATION.Models.BakeryWorker
+
+@{
+    <!-- Title of the tab. -->
+    ViewData["Title"] = "Worker Details";
+}
+
+<!-- Header. -->
+<h1>Worker Details</h1>
+
+<!-- Display the details of a worker. -->
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            First Name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.workerFirstName)
+        </dd>
+        <dt class="col-sm-2">
+            Last Name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.workerLastName)
+        </dd>
+        <dt class="col-sm-2">
+            Role
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.workerRole)
+        </dd>
+        <dt class="col-sm-2">
+            Wage per Hour ($)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.workerHourlyWage)
+        </dd>
+    </dl>
+</div>
+
+<!-- Links to click. Edit to confirm edits. Index to go back to the list of workers. -->
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.workerID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

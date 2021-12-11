@@ -1,0 +1,62 @@
+﻿<!--
+    Name: Michelle Ng // 100779006
+    File Name: Edit.cshtml
+    Date Created: 10 December 2021
+    Description: This is for editing a worker's details.
+-->
+
+@model BAKERY_WEB_APPLICATION.Models.BakeryWorker
+
+@{
+    <!-- Title of the tab. -->
+    ViewData["Title"] = "Edit Worker";
+}
+
+<!-- Header. -->
+<h1>Edit Worker Details</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="workerID" />
+            <!-- For editing the worker's first name. -->
+            <div class="form-group">
+                <label asp-for="workerFirstName" class="control-label">First Name</label>
+                <input asp-for="workerFirstName" class="form-control" />
+                <span asp-validation-for="workerFirstName" class="text-danger"></span>
+            </div>
+            <!-- For editing the worker's last name. -->
+            <div class="form-group">
+                <label asp-for="workerLastName" class="control-label">Last Name</label>
+                <input asp-for="workerLastName" class="form-control" />
+                <span asp-validation-for="workerLastName" class="text-danger"></span>
+            </div>
+            <!-- For editing the worker's role. -->
+            <div class="form-group">
+                <label asp-for="workerRole" class="control-label">Role</label>
+                <input asp-for="workerRole" class="form-control" />
+                <span asp-validation-for="workerRole" class="text-danger"></span>
+            </div>
+            <!-- For editing the worker's hourly wage. -->
+            <div class="form-group">
+                <label asp-for="workerHourlyWage" class="control-label">Wage per Hour ($)</label>
+                <input asp-for="workerHourlyWage" class="form-control" />
+                <span asp-validation-for="workerHourlyWage" class="text-danger"></span>
+            </div>
+            <!-- Button to click to make changes. -->
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,53 @@
+﻿<!--
+    Name: Michelle Ng // 100779006
+    File Name: Details.cshtml
+    Date Created: 10 December 2021
+    Description: This is for viewing the details of baked goods.
+-->
+
+@model BAKERY_WEB_APPLICATION.Models.BakedGood
+
+@{
+    <!-- Title of the tab. -->
+    ViewData["Title"] = "Details about Goods";
+}
+
+<!-- Header. -->
+<h1>Details About Baked Good</h1>
+
+<!-- Display the details of a baked good. -->
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Name of Baked Good
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.bakedGoodName)
+        </dd>
+        <dt class="col-sm-2">
+            Type of Pastry
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.typeOfPastry)
+        </dd>
+        <dt class="col-sm-2">
+            Price per Unit ($)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.pricePerUnit)
+        </dd>
+        <dt class="col-sm-2">
+            Available
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.availableOrNot)
+        </dd>
+    </dl>
+</div>
+
+<!-- Links to click. Edit to confirm edits. Index to go back to the list of baked goods. -->
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.bakedGoodID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

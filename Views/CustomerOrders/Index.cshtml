@@ -1,0 +1,71 @@
+﻿<!--
+    Name: Michelle Ng // 100779006
+    File Name: Index.cshtml
+    Date Created: 10 December 2021
+    Description: Displays all customer orders.
+-->
+
+@model IEnumerable<BAKERY_WEB_APPLICATION.Models.CustomerOrder>
+
+@{
+    <!-- Title of the tab. -->
+    ViewData["Title"] = "Customer Orders";
+}
+
+<!-- Header. -->
+<h1>Customer Orders</h1>
+
+<p>
+    <a asp-action="Create">Add a New Customer Order</a>
+</p>
+<table class="table">
+    <thead>
+        <!-- Display fields of customer orders. -->
+        <tr>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Description (goods wanted and additional details)
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+                Total ($)
+            </th>
+            <th>
+                Order Fulfilled
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Get each field and display it. -->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customerPhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.orderAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.completedOrNot)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.orderID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.orderID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.orderID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

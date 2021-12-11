@@ -1,0 +1,63 @@
+﻿<!--
+    Name: Michelle Ng // 100779006
+    File Name: Edit.cshtml
+    Date Created: 10 December 2021
+    Description: This is for editing the details of baked goods.
+-->
+
+@model BAKERY_WEB_APPLICATION.Models.BakedGood
+
+@{
+    <!-- Title of the tab. -->
+    ViewData["Title"] = "Edit Goods";
+}
+
+<!-- Header. -->
+<h1>Edit a Baked Good's Details</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="bakedGoodID" />
+            <!-- For editing the name of baked good. -->
+            <div class="form-group">
+                <label asp-for="bakedGoodName" class="control-label">Name of Baked Good</label>
+                <input asp-for="bakedGoodName" class="form-control" />
+                <span asp-validation-for="bakedGoodName" class="text-danger"></span>
+            </div>
+            <!-- For editing the type of pastry of the baked good. -->
+            <div class="form-group">
+                <label asp-for="typeOfPastry" class="control-label">Type of Pastry</label>
+                <input asp-for="typeOfPastry" class="form-control" />
+                <span asp-validation-for="typeOfPastry" class="text-danger"></span>
+            </div>
+            <!-- For editing the price of a baked good. -->
+            <div class="form-group">
+                <label asp-for="pricePerUnit" class="control-label">Price per Unit ($)</label>
+                <input asp-for="pricePerUnit" class="form-control" />
+                <span asp-validation-for="pricePerUnit" class="text-danger"></span>
+            </div>
+            <!-- For editing the status of the baked good's avaiability. -->
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="availableOrNot" /> Available
+                </label>
+            </div>
+            <!-- Button to click to make changes. -->
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Link to click to go back to the list of baked goods. -->
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

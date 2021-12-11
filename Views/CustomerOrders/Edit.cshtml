@@ -1,0 +1,69 @@
+﻿<!--
+    Name: Michelle Ng // 100779006
+    File Name: Edit.cshtml
+    Date Created: 10 December 2021
+    Description: This is for editing a customer's orders.
+-->
+
+@model BAKERY_WEB_APPLICATION.Models.CustomerOrder
+
+@{
+    <!-- Title of the tab. -->
+    ViewData["Title"] = "Edit Customer Orders";
+}
+
+<!-- Header. -->
+<h1>Edit Customer Orders</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="orderID" />
+            <div class="form-group">
+                <!-- For editing the customer's name. -->
+                <label asp-for="customerName" class="control-label"></label>
+                <input asp-for="customerName" class="form-control" />
+                <span asp-validation-for="customerName" class="text-danger"></span>
+            </div>
+            <!-- For editing the description of what the customer wants. -->
+            <div class="form-group">
+                <label asp-for="description" class="control-label">Description (goods wanted and additional details)</label>
+                <input asp-for="description" class="form-control" />
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <!-- For editing the customer's phone number. -->
+            <div class="form-group">
+                <label asp-for="customerPhoneNumber" class="control-label"></label>
+                <input asp-for="customerPhoneNumber" class="form-control" />
+                <span asp-validation-for="customerPhoneNumber" class="text-danger"></span>
+            </div>
+            <!-- For editing of the total of the order. -->
+            <div class="form-group">
+                <label asp-for="orderAmount" class="control-label"></label>
+                <input asp-for="orderAmount" class="form-control" />
+                <span asp-validation-for="orderAmount" class="text-danger"></span>
+            </div>
+            <!-- Edit of if the order is fulfilled or not. -->
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="completedOrNot" />Order Fulfilled
+                </label>
+            </div>
+            <!-- Button to click to make changes. -->
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Link to click to go back to the list of customer orders. -->
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

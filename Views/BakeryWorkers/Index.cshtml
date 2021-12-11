@@ -1,0 +1,65 @@
+﻿<!--
+    Name: Michelle Ng // 100779006
+    File Name: Index.cshtml
+    Date Created: 10 December 2021
+    Description: Displays all workers.
+-->
+
+@model IEnumerable<BAKERY_WEB_APPLICATION.Models.BakeryWorker>
+
+@{
+    <!-- Title of the tab. -->
+    ViewData["Title"] = "Workers";
+}
+
+<!-- Header. -->
+<h1>List of Workers</h1>
+
+<p>
+    <a asp-action="Create">Add a New Worker</a>
+</p>
+<table class="table">
+    <thead>
+        <!-- Display fields of workers. -->
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Role
+            </th>
+            <th>
+                Wage per Hour ($)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Get each field and display it. -->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.workerFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.workerLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.workerRole)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.workerHourlyWage)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.workerID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.workerID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.workerID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

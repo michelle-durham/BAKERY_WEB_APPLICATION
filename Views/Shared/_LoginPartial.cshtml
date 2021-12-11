@@ -1,0 +1,50 @@
+﻿<!--
+    Name: Michelle Ng // 100779006
+    File Name: _LoginPartial.cshtml
+    Date Created: 10 December 2021
+    Description: Display nav bar contents based of if a user is signed in or not.
+-->
+<!--
+    Name: Michelle Ng // 100779006
+    File Name: _Layout.cshtml
+    Date Created: 10 December 2021
+    Description: Display the main layouts: title, and nav bar depending on user login status.
+-->
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+
+    <!-- If a user is signed in; Display message on nav bar. -->
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <!-- Display hello message. -->
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+        </li>
+
+        <!-- Display nav bar links. -->
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+
+    }
+    else
+    {
+        <!-- Display register/login when a user is not logged in. -->
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Contact & Locations</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</ul>

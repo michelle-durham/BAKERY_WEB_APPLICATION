@@ -1,0 +1,68 @@
+﻿<!--
+    Name: Michelle Ng // 100779006
+    File Name: Create.cshtml
+    Date Created: 10 December 2021
+    Description: This is for creating a new customer order.
+-->
+
+@model BAKERY_WEB_APPLICATION.Models.CustomerOrder
+
+@{
+    <!-- Title of the tab. -->
+    ViewData["Title"] = "Create Customer Orders";
+}
+
+<!-- Header. -->
+<h1>Create a New Customer Order</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!-- For input of the customer's name. -->
+            <div class="form-group">
+                <label asp-for="customerName" class="control-label">Customer Name</label>
+                <input asp-for="customerName" class="form-control" />
+                <span asp-validation-for="customerName" class="text-danger"></span>
+            </div>
+            <!-- For input of the description of what the customer wants. -->
+            <div class="form-group">
+                <label asp-for="description" class="control-label">Description (goods wanted and additional details)</label>
+                <input asp-for="description" class="form-control" />
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+            <!-- For input of the customer's phone number. -->
+            <div class="form-group">
+                <label asp-for="customerPhoneNumber" class="control-label">Phone Number</label>
+                <input asp-for="customerPhoneNumber" class="form-control" />
+                <span asp-validation-for="customerPhoneNumber" class="text-danger"></span>
+            </div>
+            <!-- For input of the total of the order. -->
+            <div class="form-group">
+                <label asp-for="orderAmount" class="control-label">Total ($)</label>
+                <input asp-for="orderAmount" class="form-control" />
+                <span asp-validation-for="orderAmount" class="text-danger"></span>
+            </div>
+            <!-- A check to see whether the order has been fulfilled or not. -->
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="completedOrNot" />Order Fulfilled
+                </label>
+            </div>
+            <!-- Create button. Creates the customer's order when clicked. -->
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Will go back to the list of workers if clicked. -->
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

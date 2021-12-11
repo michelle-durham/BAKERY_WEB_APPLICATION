@@ -1,0 +1,66 @@
+﻿<!--
+    Name: Michelle Ng // 100779006
+    File Name: Index.cshtml
+    Date Created: 10 December 2021
+    Description: Displays all the baked goods.
+-->
+
+@model IEnumerable<BAKERY_WEB_APPLICATION.Models.BakedGood>
+
+@{
+    <!-- Title of the tab. -->
+    ViewData["Title"] = "Baked Goods";
+}
+
+<!-- Header. -->
+<h1>List of Baked Goods</h1>
+
+<p>
+    <a asp-action="Create">Add a New Baked Good</a>
+</p>
+<table class="table">
+    <thead>
+        <!-- Display fields of baked goods. -->
+        <tr>
+            <th>
+                Name of Baked Good
+            </th>
+            <th>
+                Type of Pastry
+            </th>
+            <th>
+                Price per Unit ($)
+            </th>
+            <th>
+                Available
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Get each field and display it. -->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bakedGoodName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.typeOfPastry)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pricePerUnit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.availableOrNot)
+                </td>
+                <!-- Links to lead to different functions of what to do with baked good(s). -->
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.bakedGoodID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.bakedGoodID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.bakedGoodID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

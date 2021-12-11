@@ -1,0 +1,43 @@
+﻿<!--
+    Name: Michelle Ng // 100779006
+    File Name: Searching.cshtml
+    Date Created: 10 December 2021
+    Description: This is for searching for pastries based on the typs of pastry.
+-->
+
+@model BAKERY_WEB_APPLICATION.Models.BakedGood
+
+@{
+    <!-- Title of the tab. -->
+    ViewData["Title"] = "Search for Goods";
+}
+
+<!-- Header. -->
+<h4>Search For a Baked Good</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SearchByPastry">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!-- Get input for the type of pastry the goods should be filtered by. -->
+            <div class="form-group">
+                <label name="SearchByPastryType" class="control-label">Type of Pastry</label>
+                <input name="SearchByPastryType" class="form-control" />
+            </div>
+            <!-- Button to click to get results. -->
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Link to click to go back to the list of baked goods.-->
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
